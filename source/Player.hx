@@ -10,7 +10,7 @@ using flixel.util.FlxSpriteUtil;
 class Player extends FlxSprite {
 
     var size:Int = 16;
-    var speed:Int = 2;
+    var speed:Int = 32;
 
     public function new(_x:Int=0, _y:Int=0):Void {
 
@@ -25,25 +25,33 @@ class Player extends FlxSprite {
 
         super.update();
 
-        if (FlxG.keys.anyPressed(['LEFT', 'A'])) {
+        if (FlxG.keys.anyJustReleased(['LEFT', 'A'])) {
 
             x -= speed;
 
-        } else if (FlxG.keys.anyPressed(['RIGHT', 'D'])) {
+        } else if (FlxG.keys.anyJustReleased(['RIGHT', 'D'])) {
 
             x += speed;
 
         }
 
-        if (FlxG.keys.anyPressed(['UP', 'W'])) {
+        if (FlxG.keys.anyJustReleased(['UP', 'W'])) {
 
             y -= speed;
 
-        } else if (FlxG.keys.anyPressed(['DOWN', 'S'])) {
+        } else if (FlxG.keys.anyJustReleased(['DOWN', 'S'])) {
 
             y += speed;
 
         }
+
+    }
+
+    public function setStart(_x:Int, _y:Int):Void {
+
+        trace(_x, _y);
+
+        setPosition(_x - 24, _y - 24);
 
     }
 
