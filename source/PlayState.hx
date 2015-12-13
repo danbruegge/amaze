@@ -18,8 +18,10 @@ class PlayState extends FlxState {
 
         bgColor = 0xff333333;
 
-        level = new Level(80, 60);
-        player = new Player(32, 32);
+        level = new Level(32, 32);
+        player = new Player();
+
+        level.setPlayerStartPos(player);
 
         add(level);
         add(player);
@@ -34,7 +36,7 @@ class PlayState extends FlxState {
 
         super.update();
 
-        FlxG.collide(player, level);
+        FlxG.overlap(player, level, level.onTileCollide);
 
     }
 }
