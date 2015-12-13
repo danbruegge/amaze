@@ -9,14 +9,20 @@ import Level;
 
 class PlayState extends FlxState {
 
+    var level:Level;
+    var player:Player;
+
     override public function create():Void {
+
         super.create();
 
         bgColor = 0xff333333;
 
-        var level = new Level(80, 60);
+        level = new Level(80, 60);
+        player = new Player(32, 32);
 
         add(level);
+        add(player);
 
     }
 
@@ -25,6 +31,10 @@ class PlayState extends FlxState {
     }
 
     override public function update():Void {
+
         super.update();
+
+        FlxG.collide(player, level);
+
     }
 }

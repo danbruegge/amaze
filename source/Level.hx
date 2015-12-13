@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
@@ -8,10 +9,6 @@ using flixel.util.FlxSpriteUtil;
 
 class Level extends FlxSpriteGroup {
 
-    var tileState:Array<Int> = [
-        FlxColor.OLIVE,
-        FlxColor.BROWN
-    ];
     var tileSize:Int = 32;
     var tiles:Array<Array<Int>> = [
         [ 0,0,1,0,0,0,0,0,0,0,0,0,0,0,0 ],
@@ -25,8 +22,12 @@ class Level extends FlxSpriteGroup {
         [ 0,1,0,1,1,1,1,1,1,1,1,0,0,1,1 ],
         [ 0,1,1,1,0,0,0,0,0,0,0,0,0,1,0 ]
     ];
+    var tileState:Array<Int> = [
+        FlxColor.OLIVE,
+        FlxColor.BROWN
+    ];
 
-    public function new(_x:Float = 0, _y:Float = 0) {
+    public function new(_x:Int=0, _y:Int=0):Void {
 
         super(_x, _y, tiles.length * tiles[0].length);
 
@@ -53,8 +54,8 @@ class Level extends FlxSpriteGroup {
         tile.immovable = true;
         tile.moves = false;
 
-        if (_id == 0) {
-            tile.allowCollisions = NONE;
+        if (_id == 1) {
+            tile.allowCollisions = FlxObject.NONE;
         }
 
         add(tile);
